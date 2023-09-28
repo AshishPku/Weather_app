@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather~app</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" />
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+            background-color: rgba(250, 235, 215, 0.817);
+        }
+       header{
+        background-color: greenyellow;
+        color: blueviolet;
+        font-size:x-small;
+        padding: 10px;
+       }
+       section{
+        background-color: white;
+        border: 1px solid white;
+        box-sizing:border-box;
+        border-radius: 20px;
+        box-shadow: 20px 20px 2000px 20px rgb(108, 240, 13);
+        padding: 20px;
+
+       }
+       h2{
+        color: rgb(21, 0, 255);
+        font-weight:800;
+        font-size:x-large;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 20px 20px 2000px 20px rebeccapurple;
+       }
+       .akp-search{
+        border: none;
+        font-size: 20px;
+        border-radius: 20px;
+        padding: 12px;
+        font-weight: 900;
+        align-items: center;
+        border: black solid 2px;
+        width: 70%;
+        margin-left: 5%;
+       }
+       .akp-searchbutton{
+        background-color: violet;
+        border: none;
+        padding: 10px;
+        border-radius: 12px;
+        font-size: 20px;
+        margin-left: 100px;
+        margin-top: 5px;
+        font-weight: 700;
+       }
+       span{
+        font-size: 25px;
+        font-weight:700;
+        font-style: italic;
+        margin-top: 16px;
+       }
+       section div span div {
+        color: red;
+       }
+    </style>
+</head>
+<body>
+          <!-- nav bar -->
+  <nav class="bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="" class="text-white   px-3 py-2 rounded-md text-2xl font-medium">Information of about Today's weather in the Location your Search</a>
+        </div>
+        <div class="flex items-center">
+          <button  class="bg-gray-700 hover:bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium mr-2" ><a href="/about/">Click HERE!</a></button>
+        </div>
+        <div class="flex sm:hidden">
+          <button class="text-gray-300 hover:text-white focus:outline-none focus:text-white" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current">
+              <path fill-rule="evenodd" d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- nav closed -->
+            <!-- section 1 -->
+        <section class="bg-gray-100 py-12">
+            <div class="max-w-full px-4 sm:px-6 lg:px-8 rounded-lg" >
+                <div class="bg-white p-4 rounded shadow-md">
+                    <img src="https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Image 4" class=" justify-center rounded-2xl w-72 h-64">
+                    <form method="post">
+                        {% csrf_token %}
+                        <br>
+                        <input class="akp-search" type="text" name="city" placeholder="choose your city" required>
+                        <button class="akp-searchbutton"  type="submit">Search</button>
+                    </form>
+                    <span> <div>City:</div>{{name}}</span><br>
+                    <span> <div>Temperature:</div>{{temp}} degC</span><br>
+                    <span> <div>Description:</div>Today's condition is: {{description}} </span><br>
+                    <span><div>Pressure:</div> {{pressure}}</span><br>
+                    <span><div>Humidity:</div> {{humidity}}</span><br>
+                    <span><div>Country_code:</div>{{country_code}}</span> <br>
+                    <span><div>Coordinate:</div>{{coordinate}}</span><br>
+                    <span> <div>Wind Speed: </div>{{speed}}</span><br>
+                </div>
+              
+            </div>
+          </section>
+          <!-- section 1 closed  -->
+        
+    </body>
+    
+    
+</body>
+</html>
